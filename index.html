@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <style>
+            body {
+                background: #555;
+            }
+            #box {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -300px;
+                margin-left: -400px;
+                background: white;
+                width: 800px;
+                height: 600px;
+            }
+            #c {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+            @-webkit-keyframes fade {
+                0% {opacity: 0;}
+                50% {opacity: 1;}
+                100% {opacity: 0;}
+            }
+            #fader {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: #111;
+                opacity: 0;
+                z-index: 2;
+                width: 100%;
+                height: 100%;
+
+                -webkit-animation-duration: 1s;
+                -webkit-animation-timing-function: ease-in-out;
+            }
+           
+        </style>
+        <script src="world-map.js"></script>
+        <script src="house-1-map.js"></script>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <canvas id="c" width="800" height="600"></canvas>
+            <div id="fader"></div>
+        </div>
+    </body>
+</html>
