@@ -12,7 +12,12 @@ var context,
 
     viewX = 0,
 
-    currentMap = worldMap;
+    currentMap = worldMap,
+
+    characterState = 'normal',
+
+    inDialogue = false,
+    enterCallback = false;
 
 function drawImage(fileName, x, y) {
     var image = imageCache[fileName];
@@ -38,12 +43,14 @@ function drawPlayer() {
 }
 
 function doKeys() {
-    pMoving = true;
-    if (keys[38]) pDirection = 0;
-    else if (keys[39]) pDirection = 1;
-    else if (keys[40]) pDirection = 2;
-    else if (keys[37]) pDirection = 3;
-    else pMoving = false;
+    if (!inDialogue) {
+        pMoving = true;
+        if (keys[38]) pDirection = 0;
+        else if (keys[39]) pDirection = 1;
+        else if (keys[40]) pDirection = 2;
+        else if (keys[37]) pDirection = 3;
+        else pMoving = false;
+    }
 }
 
 function movePlayer() {
@@ -110,6 +117,17 @@ function warp(map, x, y, direction) {
     });
 }
 
+function drawCharacters() {
+    if (currentMap.characters) {
+        currentMap.characters.forEach(function (character) {
+            var animation = character['animations'][characterState],
+                characterFrame = Math.floor(frame / 40) % animation.length;
+            
+            drawImage(animation[characterFrame], character.x - viewX, character.y);
+        });
+    }
+}
+
 function loop() {
     doKeys();
     movePlayer();
@@ -119,11 +137,78 @@ function loop() {
     //context.clearRect(0, 0, 800, 600);
     //drawWalls();
 
+    drawCharacters();
     drawPlayer();
 
     frame ++;
 
     setTimeout(loop, 10);
+}
+
+function doText(texts, name, color, callback) {
+    var box = document.getElementById('dialogue-box'),
+        nameBox = document.getElementById('name-box');
+
+    inDialogue = true;
+
+    box.style.display = 'block';
+    nameBox.style.display = 'block';
+
+    nameBox.innerHTML = name;
+
+    function nextText() {
+        var text = texts.shift(),
+            i = 0,
+            l;
+
+        box.innerHTML = '';
+
+        if (text) {
+            l = text.length;
+
+            characterState = 'talk';
+
+            function addLetter() {
+                var letter = text.substr(i, 1),
+                    span = document.createElement('span'),
+                    colorMod = Math.round((i / l) * 100) 
+
+                span.className = 'letter';
+                span.innerHTML = letter;
+                span.style.color = 'rgb('+(83+colorMod)+','+(131-colorMod)+','+(253-colorMod)+')';
+
+                box.appendChild(span);
+
+                setTimeout(function () {
+                    span.style.webkitAnimationName = 'letter-wiggle';
+                    span.style.webkitAnimationIterationCount = 'infinite';
+                    span.style.webkitAnimationDirection = 'alternate';
+                }, 800);
+
+                i ++;
+                if (i < l) {
+                    setTimeout(addLetter, 70);
+                }
+                else {
+                    characterState = 'normal';
+                    enterCallback = nextText;
+                }
+            }
+
+            addLetter();
+        }
+        else {
+            box.style.display = 'none';
+            nameBox.style.display = 'none';
+            inDialogue = false;
+
+            if (callback) {
+                callback();
+            }
+        }
+    }
+
+    nextText();
 }
 
 window.addEventListener('load', function () {
@@ -136,6 +221,11 @@ window.addEventListener('load', function () {
 
 window.addEventListener('keydown', function (event) {
     keys[event.which] = true;
+
+    if (enterCallback) {
+        enterCallback();
+        enterCallback = false;
+    }
 });
 
 window.addEventListener('keyup', function () {

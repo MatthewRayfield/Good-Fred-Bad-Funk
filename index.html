@@ -13,6 +13,7 @@
                 background: white;
                 width: 800px;
                 height: 600px;
+                overflow: hidden;
             }
             #c {
                 position: absolute;
@@ -38,7 +39,80 @@
                 -webkit-animation-duration: 1s;
                 -webkit-animation-timing-function: ease-in-out;
             }
-           
+            @-webkit-keyframes box-wiggle {
+                0% {margin-top: 15px}
+                100% {margin-top: 20px}
+            }
+            #dialogue-box {
+                display: none;
+                position: absolute;
+                top: 0px;
+                left: 20px;
+                background: rgba(240, 240, 240, .8);
+                z-index: 2;
+                width: 740px;
+                height: 180px;;
+                border-top: 5px double rgba(0,0,0,.1);
+                border-bottom: 5px double rgba(0,0,0,.1);
+                padding: 10px;
+                text-align: center;
+                box-shadow: 0px 2px 20px rgba(0,0,0,.5);
+                border-radius: 10px;
+
+                -webkit-animation-name: box-wiggle;
+                -webkit-animation-duration: 1s;
+                -webkit-animation-timing-function: ease-in-out;
+                -webkit-animation-iteration-count: infinite;
+                -webkit-animation-direction: alternate;
+            }
+            @-webkit-keyframes float-down {
+                0% {top: -100px; -webkit-transform: rotate(-40deg) scale(4);}
+                50% {top: 40px; -webkit-transform: rotate(20deg) scale(2);}
+                80% {top: -40px; -webkit-transform: rotate(-10deg) scale(3);}
+                100% {top: 0px}
+            }
+            @-webkit-keyframes letter-wiggle {
+                0% {top: -3px; -webkit-transform: rotate(-5deg);}
+                100% {top: 3px; -webkit-transform: rotate(5deg);}
+            }
+            .letter {
+                position: relative;
+                font: 40px 'Comic Sans MS';
+                font-weight: bold;
+                margin: 1px;
+                display: inline-block;
+                min-width: 20px;
+                text-shadow: 0px 2px 2px #000;
+
+                -webkit-animation-name: float-down;
+                -webkit-animation-duration: .8s;
+                -webkit-animation-timing-function: ease-in-out;
+            }
+            #name-box {
+                display: none;
+                position: absolute;
+                top: 170px;
+                right: 50px;
+                background: rgba(240, 240, 240, .9);
+                z-index: 3;
+                width: 150px;
+                height: 30px;
+                padding: 10px;
+                text-align: center;
+                box-shadow: 0px 2px 20px rgba(0,0,0,.5);
+                border-top: 3px double rgba(0,0,0,.1);
+                border-bottom: 3px double rgba(0,0,0,.1);
+                border-radius: 10px;
+                font: 25px 'Comic Sans MS';
+                color: #333;
+                line-height: 30px;
+
+                -webkit-animation-name: box-wiggle;
+                -webkit-animation-duration: 1.5s;
+                -webkit-animation-timing-function: ease-in-out;
+                -webkit-animation-iteration-count: infinite;
+                -webkit-animation-direction: alternate;
+            }
         </style>
         <script src="world-map.js"></script>
         <script src="house-1-map.js"></script>
@@ -47,6 +121,8 @@
     <body>
         <div id="box">
             <canvas id="c" width="800" height="600"></canvas>
+            <div id="dialogue-box"></div>
+            <div id="name-box">Steve</div>
             <div id="fader"></div>
         </div>
     </body>
