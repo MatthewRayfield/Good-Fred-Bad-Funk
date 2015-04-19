@@ -25,3 +25,14 @@ image sources:
 - http://image.made-in-china.com/2f0j00aMbQoYUmOBrI/Wood-Veneer-Door-HDC-037-.jpg
 - http://fc04.deviantart.net/fs71/f/2010/085/7/1/Retro_Computer_png_by_AbsurdWordPreferred.png
 - http://yourgardendecorinfo.com/wp-content/uploads/2014/09/Garudian-Lion.jpg
+
+- http://14textures.com/wp-content/uploads/2014/02/VC_Summer__3240.jpg
+- http://cdn01.wallconvert.com/_media/conv/1/15/148324-ubuntu-12.04.jpg
+- http://www.cleansealdoors.com/images/Excel_SS_Swing_Fire_Door.jpg
+- http://st.houzz.com/simgs/89a142430d44ead4_4-0924/traditional-bathroom-sinks.jpg
+- http://upload.wikimedia.org/wikipedia/commons/8/84/C64c_system.jpg
+
+- http://www.eonline.com/news/567571/happy-world-cat-day-here-are-22-perfect-gifs-to-honor-our-feline-overlords
+- http://viralgifs.com/lulz-50-epic-cat-gifs/
+- http://www.complex.com/style/2013/04/the-25-funniest-grumpy-cat-gifs/
+- and maybe a few from google images … i searched "cat gifs"

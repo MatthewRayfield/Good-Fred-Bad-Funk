@@ -1,6 +1,37 @@
 var worldMap = {
     background: 'world-map-haha.png',
     width: 1677,
+    characterState: 'smile',
+    wcharacters: [
+        {
+            x: 370,
+            y: 250,
+            animations: {
+                normal: ['blue-guy-1.gif', 'blue-guy-2.gif'],
+                talk: ['blue-guy-1.gif', 'blue-guy-talk.gif'],
+                smile: ['blue-guy-smile-1.gif', 'blue-guy-smile-2.gif']
+            }
+        },
+        {
+            x: 685,
+            y: 330,
+            animations: {
+                normal: ['slug-1.gif', 'slug-2.gif'],
+                talk: ['slug-1.gif', 'slug-talk.gif'],
+                smile: ['slug-smile-1.gif', 'slug-smile-2.gif']
+            }
+        },
+        {
+            x: 520,
+            y: 255,
+            animations: {
+                normal: ['sally-1.gif', 'sally-2.gif'],
+                talk: ['sally-1.gif', 'sally-talk.gif'],
+                smile: ['sally-smile-1.gif', 'sally-smile-2.gif']
+            }
+        }
+ 
+    ],
     walls: [
         {
             // from house 1 to rv
@@ -86,7 +117,12 @@ var worldMap = {
             width: 125,
             height: 135,
             action: function () {
-                playSound('chord.wav');
+                if (flags['sally-funk-destroyed']) {
+                    warp(iglooMap, 200, 340, 2);
+                }
+                else {
+                    playSound('chord.wav');
+                }
             }
         },
         {

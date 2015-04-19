@@ -19,10 +19,7 @@ var context,
     inDialogue = false,
     enterCallback = false,
     
-    flags = {
-        //'steve-1': true
-        //'sally-1': true
-    },
+    flags = {},
 
     elementCache = {},
     
@@ -386,6 +383,23 @@ window.addEventListener('load', function () {
                     0,
                     0,
                     'Blip_Select55.wav'
+                );
+            }, 700);
+        }
+        else if (currentMap == iglooMap && flags['slug-funk-destroyed']) {
+            inDialogue = true;
+            pDirection = 3;
+            setTimeout(function () {
+                doText(
+                    [
+                        'WHOOOOOOOOOAAAAAHH !!!! MANE you DID it !!',
+                        'i CAN feeeeeel my tats COMING back right now !!!',
+                        ' YoUR a TRUE hero Mang !  an HonoRARY SLUG in my BOOk ;)',
+                    ],
+                    'Slug',
+                    0,
+                    0,
+                    'Hit_Hurt45.wav'
                 );
             }, 700);
         }

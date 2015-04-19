@@ -84,6 +84,62 @@ var webpages = {
                     }
                 }, 500);
             }
+            else if (currentMap == iglooMap && !flags['slug-funk-destroyed']) {
+                function moveButton() {
+                    e('next-cat-button').style.marginTop = Math.floor(Math.random()*1000);
+                }
+                moveButton();
+
+                setTimeout(function () {
+                    var hp = 4;
+
+                    showBubble('You\'re PATHETIC ! I\'m unstoppable now!');
+
+                    nextCatCallback = function () {
+                        var message;
+
+                        hp --;
+
+                        e('bad-funk-bubble').style.display = 'none';
+                        moveButton();
+
+                        if (hp == 3) {
+                            message = 'Hmph!  You got lucky that time...';
+                        }
+                        else if (hp == 2) {
+                            message = 'Uggg.. No... How could it be ... ';
+                        }
+                        else if (hp == 1) {
+                            message = 'uhhhhggggg .. could you really defeat me .. ?';
+                        }
+                        else if (hp == 0) {
+                            exploding = true;
+                            nextCatCallback = false;
+
+                            setTimeout(function () {
+                                e('next-cat-button').style.marginTop = '0';
+                                showBubble('BLAAAAARRGHHHHGHGH!!!!! YOU HAVE\'NT SEEN THE LAST OF MEEEEEEEEE!!!',
+                                    function () {
+                                        exploding = false;
+                                        playSound('recycle.wav');
+                                        flags['slug-funk-destroyed'] = true;
+                                        iglooMap.characterState = 'smile';
+                                        e('bad-funk-toolbar').style.marginTop = -300;
+                                        e('bad-funk-toolbar').style.webkitAnimationName = 'funk-die';
+                                    }
+                                );
+                                explode();
+                            }, 500);
+                        }
+
+                        if (message) {
+                            setTimeout(function () {
+                                showBubble(message);
+                            }, 500);
+                        }
+                    }
+                }, 500);
+            }
 
             e('cat-image').src = 'images/cats/' + (Math.floor(Math.random()*30)+1) + '.gif';
         }
@@ -91,6 +147,14 @@ var webpages = {
     'zmz.www': {
         title: 'ZMZ - B+ cELEBs 25/7',
         id: 'zmz'
+    },
+    'tek-squeeeze.www': {
+        title: 'Tek SqueeezE - Your LATEST Digital Desires!',
+        id: 'tek-squeeeze'
+    },
+    'credits.www': {
+        title: 'Credits',
+        id: 'credits'
     },
     '404': {
         id: '404'
