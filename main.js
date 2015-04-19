@@ -20,15 +20,17 @@ var context,
     enterCallback = false,
     
     flags = {
-        'steve-1': true
+        //'steve-1': true
+        //'sally-1': true
     },
 
     elementCache = {},
     
     currentUrl = '',
     urlHistory = [],
-    warping = false,
-    lastAction = null;
+    lastAction = null,
+    exploding = false,
+    nextCatCallback = null;
 
 function e(id) {
     var element = elementCache[id];
@@ -145,19 +147,15 @@ function fade(callback) {
 }
 
 function warp(map, x, y, direction) {
-    if (!warping) {
-        warping = true;
-        playSound('step-through-door.wav', .5);
+    playSound('step-through-door.wav', .5);
 
-        fade(function () {
-            pX = x;
-            pY = y;
-            pDirection = direction;
-            currentMap = map;
-            characterState = currentMap.characterState;
-            warping = false;
-        });
-    }
+    fade(function () {
+        pX = x;
+        pY = y;
+        pDirection = direction;
+        currentMap = map;
+        characterState = currentMap.characterState;
+    });
 }
 
 function drawCharacters() {
@@ -188,9 +186,11 @@ function loop() {
     setTimeout(loop, 10);
 }
 
-function doText(texts, name, color, callback) {
+function doText(texts, name, color, callback, sound) {
     var box = document.getElementById('dialogue-box'),
         nameBox = document.getElementById('name-box');
+
+    sound = sound || 'Hit_Hurt38.wav';
 
     inDialogue = true;
 
@@ -223,7 +223,7 @@ function doText(texts, name, color, callback) {
                 box.appendChild(span);
 
                 if ([' ', '.', '?', '!', ','].indexOf(letter) == -1) {
-                    playSound('Hit_Hurt38.wav', .5);
+                    playSound(sound, .5);
                 }
 
                 setTimeout(function () {
@@ -261,6 +261,10 @@ function doText(texts, name, color, callback) {
 function loadWebpage(url, back) {
     var webpage = webpages[url] || {title: '404 - Page not found', id: '404'},
         url;
+
+    if (exploding) {
+        return;
+    }
 
     if (!back && currentUrl) {
         urlHistory.push(currentUrl);
@@ -336,6 +340,10 @@ window.addEventListener('load', function () {
     e('close-button').addEventListener('click', function () {
         var pc = document.getElementById('pc');
 
+        if (exploding) {
+            return;
+        }
+
         playSound('windows-hardware-remove.wav');
         pc.style.webkitAnimationDirection = 'reverse';
         pc.style.opacity = 0;
@@ -361,6 +369,23 @@ window.addEventListener('load', function () {
                     0,
                     function () {
                     }
+                );
+            }, 700);
+        }
+        else if (currentMap == hutMap && flags['sally-funk-destroyed']) {
+            inDialogue = true;
+            pDirection = 1;
+            setTimeout(function () {
+                doText(
+                    [
+                        'aw. YEA!  you DID it!! my BAD FUNK is gone... i FEEL great!!!',
+                        '  i ThInk I can dance again!! i\'MM goNNA be a STAR again !!!!',
+                        'thANK you!... & take ThIS key. it\"S for slug\'s iglooo NeXT dooor ... :]'
+                    ],
+                    'Sally',
+                    0,
+                    0,
+                    'Blip_Select55.wav'
                 );
             }, 700);
         }
@@ -393,8 +418,13 @@ window.addEventListener('load', function () {
 
     e('next-cat-button').addEventListener('click', function () {
         playSound('windows-click.wav');
+        playSound('meow.wav', .5);
         e('web-content').scrollTop = 0;
         e('cat-image').src = 'images/cats/' + (Math.floor(Math.random()*30)+1) + '.gif';
+
+        if (nextCatCallback) {
+            nextCatCallback();
+        }
     });
     e('bad-funk-toolbar').addEventListener('mousemove', function (event) {
         event.preventDefault();

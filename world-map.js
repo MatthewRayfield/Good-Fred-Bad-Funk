@@ -64,7 +64,12 @@ var worldMap = {
             width: 80,
             height: 185,
             action: function () {
-                playSound('chord.wav');
+                if (flags['steve-funk-destroyed']) {
+                    warp(hutMap, 479, 322, 2);
+                }
+                else {
+                    playSound('chord.wav');
+                }
             }
         },
         {

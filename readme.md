@@ -19,3 +19,9 @@ image sources:
 - http://rs517.pbsrc.com/albums/u333/PhotoPun/explosion.gif~c200
 
 - http://www.404errorpages.com/images/image003.png
+
+- http://decozt.com/wp-content/uploads/2014/06/apartments-decoration-living-room-basement-besf-of-ideas-big-tile-of-ceramic-white-sills-with-glasses-sliding-door-using-aluminum-frame-green-color-wall-white-ceiling-decorates-ceramic-patterns-tile-floo.jpg
+- http://s298.photobucket.com/user/duffield02/media/Backgrounds/ZebraPrint.jpg.html
+- http://image.made-in-china.com/2f0j00aMbQoYUmOBrI/Wood-Veneer-Door-HDC-037-.jpg
+- http://fc04.deviantart.net/fs71/f/2010/085/7/1/Retro_Computer_png_by_AbsurdWordPreferred.png
+- http://yourgardendecorinfo.com/wp-content/uploads/2014/09/Garudian-Lion.jpg
