@@ -17,7 +17,9 @@ var context,
     characterState = 'normal',
 
     inDialogue = false,
-    enterCallback = false;
+    enterCallback = false,
+    
+    flags = {};
 
 function drawImage(fileName, x, y) {
     var image = imageCache[fileName];
@@ -29,6 +31,12 @@ function drawImage(fileName, x, y) {
     }
 
     context.drawImage(image, Math.floor(x), Math.floor(y));
+}
+
+function playSound(fileName) {
+    var audio = new Audio('sounds/' + fileName);
+
+    audio.play();
 }
 
 function drawPlayer() {
@@ -179,6 +187,10 @@ function doText(texts, name, color, callback) {
 
                 box.appendChild(span);
 
+                if ([' ', '.', '?', '!', ','].indexOf(letter) == -1) {
+                    playSound('Hit_Hurt38.wav');
+                }
+
                 setTimeout(function () {
                     span.style.webkitAnimationName = 'letter-wiggle';
                     span.style.webkitAnimationIterationCount = 'infinite';
@@ -217,6 +229,22 @@ window.addEventListener('load', function () {
     context = canvas.getContext('2d');
 
     loop();
+
+    // misc setup k
+    document.getElementById('close-button').addEventListener('click', function () {
+        var pc = document.getElementById('pc');
+
+        playSound('windows-hardware-remove.wav');
+        pc.style.webkitAnimationDirection = 'reverse';
+        pc.style.opacity = 0;
+        pc.style.webkitAnimationName = 'zoom-fade';
+
+        setTimeout(function () {
+            inDialogue = false;
+            pc.style.display = 'none';
+            pc.style.webkitAnimationName = '';
+        }, 500);
+    });
 });
 
 window.addEventListener('keydown', function (event) {

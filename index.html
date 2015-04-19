@@ -113,6 +113,167 @@
                 -webkit-animation-iteration-count: infinite;
                 -webkit-animation-direction: alternate;
             }
+            @-webkit-keyframes zoom-fade {
+                0% {opacity: 0;top:300;-webkit-transform: matrix(1, 1, 0, 1, 0, 0)}
+                100% {opacity: 1;}
+            }
+            @-webkit-keyframes down-fade {
+                0% {opacity: 1;}
+                100% {opacity: 0;top:300}
+            }
+            #pc {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                z-index: 4;
+                width: 800px;
+                height: 600px;
+                background: #004f98;
+                display: none;
+
+                -webkit-animation-duration: .2s;
+                -webkit-animation-timing-function: ease-in-out;
+            }
+            #task-bar {
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                z-index: 6;
+                width: 800px;
+                height: 30px;
+                background: url('images/task-bar.png');
+            }
+            #browser-window {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                z-index: 5;
+                width: 800px;
+                height: 570px;
+                background: url('images/browser-window.png');
+            }
+            #bad-funk-toolbar {
+                position: absolute;
+                top: 92px;
+                left: 0px;
+                z-index: 5;
+                width: 800px;
+                height: 23px;
+                padding-top: 3px;
+                background: url('images/bad-funk-toolbar.png');
+            }
+            #bad-funk-toolbar .inner {
+                margin: 0 15px;
+                line-height: 26px;
+                font: 15px times;
+                vertical-align: bottom;
+                -webkit-font-smoothing: antialiased;
+            }
+            #bad-funk-bubble {
+                position: absolute;
+                top: 110px;
+                left: 21px;
+                z-index: 5;
+                width: 243px;
+                height: 110px;
+                background: url('images/bad-funk-bubble.png');
+                display: none;
+            }
+            #bad-funk-bubble .inner {
+                position: absolute;
+                top: 50px;
+                left: 15px;
+                z-index: 5;
+                width: 210px;
+                height: 50px;
+                font: 16px georgia;
+                -webkit-font-smoothing: antialiased;
+            }
+            #explosion {
+                position: absolute;
+                z-index: 5;
+                top: -83px;
+                left: 270px;
+                display: none;
+            }
+            #web-content {
+                position: absolute;
+                top: 118px;
+                left: 6px;
+                width: 778px;
+                height: 413px;
+                padding: 5px;
+                z-index: 5;
+                overflow: scroll;
+            }
+            #url-input {
+                border: none;
+                position: absolute;
+                top: 73px;
+                left: 78px;
+                width: 585px;
+            }
+            #window-title {
+                position: absolute;
+                top: 7px;
+                left: 30px;
+                color: white;
+                font: 14px tahoma;
+                -webkit-font-smoothing: antialiased;
+            }
+            #bar-title {
+                position: absolute;
+                top: 578px;
+                left: 140px;
+                color: white;
+                z-index: 7;
+                font: 12px tahoma;
+                width: 120px;
+                line-height: 15px;
+                height: 15px;
+                overflow: hidden;
+                -webkit-font-smoothing: antialiased;
+            }
+            #close-button {
+                position: absolute;
+                top: 5px;
+                left: 773px;
+                width: 21px;
+                height: 22px;
+                cursor: pointer;
+            }
+            #minimize-button {
+                position: absolute;
+                top: 5px;
+                left: 726px;
+                width: 22px;
+                height: 22px;
+                cursor: pointer;
+            }
+            #back-button {
+                position: absolute;
+                top: 34px;
+                left: 10px;
+                width: 75px;
+                height: 30px;
+                cursor: pointer;
+            }
+            #home-button {
+                position: absolute;
+                top: 34px;
+                left: 200px;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+            }
+            #go-button {
+                position: absolute;
+                top: 69px;
+                left: 690px;
+                width: 56px;
+                height: 22px;
+                cursor: pointer;
+            }
         </style>
         <script src="world-map.js"></script>
         <script src="house-1-map.js"></script>
@@ -124,6 +285,49 @@
             <div id="dialogue-box"></div>
             <div id="name-box">Steve</div>
             <div id="fader"></div>
+            <div id="pc">
+                <div id="bar-title">Very REAL News . www - Internets Explorer</div>
+                <div id="browser-window">
+                    <div id="close-button"></div>
+                    <div id="minimize-button"></div>
+                    <div id="back-button"></div>
+                    <div id="home-button"></div>
+                    <div id="go-button"></div>
+
+                    <div id="window-title">Very REAL News . www - Internets Explorer</div>
+                    <input id="url-input" value="very-real-news.www"></input>
+                    <div id="bad-funk-toolbar">
+                        <span class="inner">
+                            <img src="images/crying-smiley.gif" />
+                            &nbsp;BAd FUNk TooLBAR v6.66&nbsp;
+                            <img src="images/winking-smiley.gif" />
+                            &nbsp;POWER LEVEL: 1000%&nbsp;
+                            <img src="images/cooling-smiley.gif" />
+                            &nbsp;wARGNIN: NeVER UNINSTALL!! plzlol&nbsp;
+                        </span>
+                    </div>
+                    <div id="bad-funk-bubble">
+                        <div class="inner">
+                            haha... okay dude... you'll have to try harder than that!!
+                        </div>
+                    </div>
+                    <img id="explosion" src="http://rs517.pbsrc.com/albums/u333/PhotoPun/explosion.gif~c200" />
+                    <div id="web-content">
+                        <h1 style="text-decoration: underline">Very REAL News . www</h1>
+                        <h2>TOP STORY::</h2>
+                        <h3>EVIL browser toolbar WREAKS havoc in internet super highway</h3>
+                        <p style="font:20px monospace">
+                        Personal Computer experts are saying this could be THE NEXT y2K!<br>The BAD FUNK toolbar SECRETLY installs on your computer's browsing window & use COLD WAR TECHNOLOGY to hypnotize put you in REAL SALTY MOODs.<br><br>BEST ADVICE: unplug internet wires HA!<br><br>but if friends alreayd have installed BAD FUNK,, experts advice that only weakness is <a id="cat-tube-link" href="javascript:void(0)">cat-tube.www</a>
+                        </p>
+                        <h2>BOTTOM STORY :</h2>
+                        <h3>NEW use for PACKING PEANUTES surprises SENATOR!!!</h3>
+                        <p style="font:20px monospace">
+                        put em in hot cocoa when no mallows HA!<br><br>SEN. Kobe says : "i'm trying that when i get home form a long day in the DC" :]]
+                        </p>
+                    </div>
+                </div>
+                <div id="task-bar"></div>
+            </div>
         </div>
     </body>
 </html>

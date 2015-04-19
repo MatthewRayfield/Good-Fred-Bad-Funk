@@ -55,7 +55,31 @@ var house1Map = {
             y: 370,
             width: 180,
             height: 150,
-            action: 1
+            action: function () {
+                var pc = document.getElementById('pc');
+
+                if (!flags['steve-1']) {
+                    doText(
+                        [
+                            'hey... wait...',
+                        ],
+                        'Steve',
+                        0
+                    );
+                    return;
+                }
+
+                inDialogue = true;
+
+                playSound('windows-hardware-insert.wav');
+                pc.style.display = 'block';
+                pc.style.webkitAnimationDirection = 'normal';
+                pc.style.opacity = 1;
+                pc.style.webkitAnimationName = 'zoom-fade';
+                setTimeout(function () {
+                    pc.style.webkitAnimationName = '';
+                }, 500);
+            }
         },
         {
             // blue guy
@@ -64,18 +88,32 @@ var house1Map = {
             width: 100,
             height: 160,
             action: function () {
-                doText(
-                    [
-                        'Whhhhhhaat are you talking about?? Hey,,, cn you help me?',
-                        'okay. cool. so here\'s the thing.... you ready...',
-                        'i\'ve got the BAD FUNK... bad! reeeeal bad bro...',
-                    ],
-                    'Steve',
-                    0,
-                    function () {
-                        console.log('all done here!');
-                    }
-                );
+                if (!flags['steve-1']) {
+                    doText(
+                        [
+                            'Whhhhhhaat are you talking about?? Hey,,, cn you help me?',
+                            'okay. cool. so here\'s the thing.... you ready...',
+                            'i\'ve got the BAD FUNK... bad! reeeeal bad bro...',
+                            'I CAN\'T LIVE LIKE THIS! .... ahem..sorry.   but dude. i need you\'re help',
+                        ],
+                        'Steve',
+                        0,
+                        function () {
+                            flags['steve-1'] = true;
+                        }
+                    );
+                }
+                else {
+                    doText(
+                        [
+                            '   please help!!     oh & you can use my PC :]]]'
+                        ],
+                        'Steve',
+                        0,
+                        function () {
+                        }
+                    );
+                }
             }
         }
     ]
