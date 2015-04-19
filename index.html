@@ -152,15 +152,22 @@
                 height: 570px;
                 background: url('images/browser-window.png');
             }
+            @-webkit-keyframes funk-die {
+                0% {margin-top: 0}
+                100% {-webkit-transform: rotate(-500deg);margin-top:-300}
+            }
             #bad-funk-toolbar {
                 position: absolute;
                 top: 92px;
                 left: 0px;
-                z-index: 5;
+                z-index: 6;
                 width: 800px;
                 height: 23px;
                 padding-top: 3px;
                 background: url('images/bad-funk-toolbar.png');
+
+                -webkit-animation-duration: 2s;
+                -webkit-animation-timing-function: ease-in-out;
             }
             #bad-funk-toolbar .inner {
                 margin: 0 15px;
@@ -168,20 +175,22 @@
                 font: 15px times;
                 vertical-align: bottom;
                 -webkit-font-smoothing: antialiased;
+                cursor: pointer;
             }
             #bad-funk-bubble {
                 position: absolute;
                 top: 110px;
                 left: 21px;
-                z-index: 5;
+                z-index: 7;
                 width: 243px;
                 height: 110px;
                 background: url('images/bad-funk-bubble.png');
                 display: none;
+                cursor: pointer;
             }
             #bad-funk-bubble .inner {
                 position: absolute;
-                top: 50px;
+                top: 45px;
                 left: 15px;
                 z-index: 5;
                 width: 210px;
@@ -192,17 +201,18 @@
             #explosion {
                 position: absolute;
                 z-index: 5;
-                top: -83px;
+                bottom: 0;
                 left: 270px;
                 display: none;
             }
             #web-content {
                 position: absolute;
-                top: 118px;
+                top: 94px;
                 left: 6px;
                 width: 778px;
-                height: 413px;
+                height: 418px;
                 padding: 5px;
+                padding-top: 24px;
                 z-index: 5;
                 overflow: scroll;
             }
@@ -274,19 +284,23 @@
                 height: 22px;
                 cursor: pointer;
             }
+            #power-level {
+                vertical-align: bottom;
+            }
         </style>
         <script src="world-map.js"></script>
         <script src="house-1-map.js"></script>
+        <script src="webpages.js"></script>
         <script src="main.js"></script>
     </head>
     <body>
         <div id="box">
             <canvas id="c" width="800" height="600"></canvas>
             <div id="dialogue-box"></div>
-            <div id="name-box">Steve</div>
+            <div id="name-box"></div>
             <div id="fader"></div>
             <div id="pc">
-                <div id="bar-title">Very REAL News . www - Internets Explorer</div>
+                <div id="bar-title"></div>
                 <div id="browser-window">
                     <div id="close-button"></div>
                     <div id="minimize-button"></div>
@@ -294,36 +308,47 @@
                     <div id="home-button"></div>
                     <div id="go-button"></div>
 
-                    <div id="window-title">Very REAL News . www - Internets Explorer</div>
-                    <input id="url-input" value="very-real-news.www"></input>
+                    <div id="window-title"></div>
+                    <input id="url-input"></input>
                     <div id="bad-funk-toolbar">
-                        <span class="inner">
+                        <span id="bad-funk-inner" class="inner">
                             <img src="images/crying-smiley.gif" />
                             &nbsp;BAd FUNk TooLBAR v6.66&nbsp;
                             <img src="images/winking-smiley.gif" />
-                            &nbsp;POWER LEVEL: 1000%&nbsp;
+                            &nbsp;POWER LEVEL: <span id="power-level">1000</span>%&nbsp;
                             <img src="images/cooling-smiley.gif" />
                             &nbsp;wARGNIN: NeVER UNINSTALL!! plzlol&nbsp;
                         </span>
+                        <img id="explosion" src="images/explosion.gif" />
                     </div>
                     <div id="bad-funk-bubble">
-                        <div class="inner">
+                        <div id="bubble-inner" class="inner">
                             haha... okay dude... you'll have to try harder than that!!
                         </div>
                     </div>
-                    <img id="explosion" src="http://rs517.pbsrc.com/albums/u333/PhotoPun/explosion.gif~c200" />
                     <div id="web-content">
-                        <h1 style="text-decoration: underline">Very REAL News . www</h1>
-                        <h2>TOP STORY::</h2>
-                        <h3>EVIL browser toolbar WREAKS havoc in internet super highway</h3>
-                        <p style="font:20px monospace">
-                        Personal Computer experts are saying this could be THE NEXT y2K!<br>The BAD FUNK toolbar SECRETLY installs on your computer's browsing window & use COLD WAR TECHNOLOGY to hypnotize put you in REAL SALTY MOODs.<br><br>BEST ADVICE: unplug internet wires HA!<br><br>but if friends alreayd have installed BAD FUNK,, experts advice that only weakness is <a id="cat-tube-link" href="javascript:void(0)">cat-tube.www</a>
-                        </p>
-                        <h2>BOTTOM STORY :</h2>
-                        <h3>NEW use for PACKING PEANUTES surprises SENATOR!!!</h3>
-                        <p style="font:20px monospace">
-                        put em in hot cocoa when no mallows HA!<br><br>SEN. Kobe says : "i'm trying that when i get home form a long day in the DC" :]]
-                        </p>
+                        <div id="very-real-news">
+                            <h1 style="text-decoration: underline">Very REAL News . www</h1>
+                            <h2>TOP STORY::</h2>
+                            <h3>EVIL browser toolbar WREAKS havoc in internet super highway</h3>
+                            <p style="font:20px monospace">
+                            Personal Computer experts are saying this could be THE NEXT y2K!<br>The BAD FUNK toolbar SECRETLY installs on your computer's browsing window & use COLD WAR TECHNOLOGY to hypnotize put you in REAL SALTY MOODs.<br><br>BEST ADVICE: unplug internet wires HA!<br><br>but if friends alreayd have installed BAD FUNK,, experts advice that only weakness is <a id="cat-tube-link" href="javascript:void(0)">cat-tube.www</a>
+                            </p>
+                            <h2>BOTTOM STORY :</h2>
+                            <h3>NEW use for PACKING PEANUTES surprises SENATOR!!!</h3>
+                            <p style="font:20px monospace">
+                            put em in hot cocoa when no mallows HA!<br><br>SEN. Kobe says : "i'm trying that when i get home form a long day in the DC" :]]
+                            </p>
+                        </div>
+                        <div id="cat-tube" style="text-align: center">
+                            <h1 style="margin: 8px">CAT TUBE</h1>
+                            - ~ - the best of CATs SINCE '93 - ~ - 3082 cool viDz! - ~ - 18235 hOURS of WHA? - ~ - Not ur pep pep's Cat site ;-] - ~ - BEST VIEWED in Netscape Navigator v2.09 - ~ - <br> - ~ - always lookin for FRESH clips, email STAN-the-MAN@cats-tube.www - ~ -
+                            <img id="cat-image" style="margin-top:10px" /><br><br>
+                            <a href="javascript:void(0)" id="next-cat-button">NeXT CaT .-></a>
+                        </div>
+                        <div id="404" style="font:20px monospace">
+                            <img src="images/4042.gif" />
+                        </div>
                     </div>
                 </div>
                 <div id="task-bar"></div>

@@ -11,3 +11,11 @@ image sources:
 - http://thecomputerrepairexpert.com/wp-content/uploads/2014/03/Tatung-einstein-computer.png
 - http://freera.org/wp-content/uploads/2015/02/Unique-interior-doors-15.jpg
 - http://www.petsolutions.com/images/Products/77206885.jpg
+
+- http://blogs.msdn.com/cfs-filesystemfile.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-00-41-22-metablogapi/4300.image_5F00_4E44DE2A.png
+- https://www.kirsle.net/creativity/articles/experiment-3.png
+- http://www.wackyb.co.nz/archive/icq/smileys.gif
+- http://murphymac.com/slib/images/disable-windows-xp-notification-bubbles-balloons.png
+- http://rs517.pbsrc.com/albums/u333/PhotoPun/explosion.gif~c200
+
+- http://www.404errorpages.com/images/image003.png

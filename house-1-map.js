@@ -1,6 +1,7 @@
 var house1Map = {
     background: 'house-1-map.png',
     width: 800,
+    characterState: 'normal',
     characters: [
         {
             x: 300,
@@ -56,8 +57,6 @@ var house1Map = {
             width: 180,
             height: 150,
             action: function () {
-                var pc = document.getElementById('pc');
-
                 if (!flags['steve-1']) {
                     doText(
                         [
@@ -69,16 +68,22 @@ var house1Map = {
                     return;
                 }
 
-                inDialogue = true;
+                if (!flags['steve-funk-destroyed']) {
+                    showPc('very-real-news.www');
 
-                playSound('windows-hardware-insert.wav');
-                pc.style.display = 'block';
-                pc.style.webkitAnimationDirection = 'normal';
-                pc.style.opacity = 1;
-                pc.style.webkitAnimationName = 'zoom-fade';
-                setTimeout(function () {
-                    pc.style.webkitAnimationName = '';
-                }, 500);
+                    setTimeout(function () {
+                        showBubble('Oh hey! My name is Bad Funk! But I\'m really a good guy ;] Let\'s be buds k?');
+                    }, 1000);
+                }
+                else {
+                    doText(
+                        [
+                            'hey. man. don\t you have like,,, better things to do ??',
+                        ],
+                        'Steve',
+                        0
+                    );
+                }
             }
         },
         {
@@ -101,6 +106,15 @@ var house1Map = {
                         function () {
                             flags['steve-1'] = true;
                         }
+                    );
+                }
+                else if (flags['steve-funk-destroyed']) {
+                    doText(
+                        [
+                            'dude,,,,, youre so COOL :]]'
+                        ],
+                        'Steve',
+                        0
                     );
                 }
                 else {

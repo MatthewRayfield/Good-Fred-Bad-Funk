@@ -39,7 +39,9 @@ var worldMap = {
             y: 150,
             width: 90,
             height: 145,
-            action: 1
+            action: function () {
+                playSound('chord.wav');
+            }
         },
         {
             // right of rv
@@ -61,7 +63,9 @@ var worldMap = {
             y: 150,
             width: 80,
             height: 185,
-            action: 1
+            action: function () {
+                playSound('chord.wav');
+            }
         },
         {
             // right of hut
@@ -76,7 +80,9 @@ var worldMap = {
             y: 250,
             width: 125,
             height: 135,
-            action: 1
+            action: function () {
+                playSound('chord.wav');
+            }
         },
         {
             // right of igloo
@@ -91,7 +97,9 @@ var worldMap = {
             y: 400,
             width: 305,
             height: 160,
-            action: 1
+            action: function () {
+                playSound('chord.wav');
+            }
         },
         {
             // right of house 2
