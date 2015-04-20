@@ -538,6 +538,11 @@ function preloadImages() {
         'slug-smile-1.gif',
         'slug-smile-2.gif',
         'slug-talk.gif',
+
+        'world-map-haha.png',
+        'house-1-map.png',
+        'igloo-map.png"',
+        'hut-map.png"',
     ].forEach(function (url) {
         drawImage(url, 0, 0);
     });
