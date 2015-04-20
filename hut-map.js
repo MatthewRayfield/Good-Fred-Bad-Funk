@@ -43,7 +43,7 @@ var hutMap = {
                         'aw. hey. watCh out !! ... that\'s a reaaal LiON you know!',
                     ],
                     'Sally',
-                    0,
+                    [150, 111, 170],
                     function () {
                         console.log('all done here!');
                     },
@@ -64,7 +64,7 @@ var hutMap = {
                             'aw. hey... it\'s Not turned oN...',
                         ],
                         'Sally',
-                        0,
+                        [150, 111, 170],
                         0,
                         'Blip_Select55.wav'
                     );
@@ -84,7 +84,7 @@ var hutMap = {
                             'aw. hey... i nEED to chek my e-email ... ',
                         ],
                         'Sally',
-                        0,
+                        [150, 111, 170],
                         0,
                         'Blip_Select55.wav'
                     );
@@ -107,7 +107,7 @@ var hutMap = {
                             'aw. hey. mayybbe you could hElp Me ?? ... just a thought .',
                         ],
                         'Sally',
-                        0,
+                        [150, 111, 170],
                         function () {
                             flags['sally-1'] = true;
                         },
@@ -120,7 +120,7 @@ var hutMap = {
                             'aw. hEY! ... i CAN do othEr danCes now!!! ... bUT i still like this one ;]]'
                         ],
                         'Sally',
-                        0,
+                        [150, 111, 170],
                         function () {
                         },
                         'Blip_Select55.wav'
@@ -132,7 +132,7 @@ var hutMap = {
                             'aw. hey.   i turNEd on the PC for you :) ......'
                         ],
                         'Sally',
-                        0,
+                        [150, 111, 170],
                         function () {
                         },
                         'Blip_Select55.wav'

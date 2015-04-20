@@ -73,7 +73,7 @@ var iglooMap = {
                         'heh ... that\'s a NICE sInk     don\'Tcha thInk ??? ;]',
                     ],
                     'Slug',
-                    0,
+                    [45, 188, 157],
                     function () {
                         console.log('all done here!');
                     },
@@ -94,7 +94,7 @@ var iglooMap = {
                             'BRUH ... don\'T be messn WiTH a SLUG\'s stuff',
                         ],
                         'Slug',
-                        0,
+                        [45, 188, 157],
                         0,
                         'Hit_Hurt45.wav'
                     );
@@ -114,7 +114,7 @@ var iglooMap = {
                             'YO ... there\'s PleNTy of time FOR computin LATER mane...',
                         ],
                         'Slug',
-                        0,
+                        [45, 188, 157],
                         0,
                         'Hit_Hurt45.wav'
                     );
@@ -138,7 +138,7 @@ var iglooMap = {
                             'i ThInk that WHACKy bAD FUnK is messn my MoJO ... cAN you HElp?'
                         ],
                         'Slug',
-                        0,
+                        [45, 188, 157],
                         function () {
                             flags['slug-1'] = true;
                         },
@@ -151,7 +151,7 @@ var iglooMap = {
                             'Let\'s GO PARTY wrrrnnn wrnnnn wrnnn wrrrnnoooooooo !!'
                         ],
                         'Slug',
-                        0,
+                        [45, 188, 157],
                         function () {
                         },
                         'Hit_Hurt45.wav'
@@ -163,7 +163,7 @@ var iglooMap = {
                             'ayyyyyyy ... PCs right oever thRre .. HoOk a SLUG up MaNE ;]'
                         ],
                         'Slug',
-                        0,
+                        [45, 188, 157],
                         function () {
                         },
                         'Hit_Hurt45.wav'

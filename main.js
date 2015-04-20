@@ -195,6 +195,7 @@ function doText(texts, name, color, callback, sound) {
     var box = document.getElementById('dialogue-box'),
         nameBox = document.getElementById('name-box');
 
+    color = color || [83,131,253];
     sound = sound || 'Hit_Hurt38.wav';
 
     inDialogue = true;
@@ -228,7 +229,7 @@ function doText(texts, name, color, callback, sound) {
 
                 span.className = 'letter';
                 span.innerHTML = letter;
-                span.style.color = 'rgb('+(83+colorMod)+','+(131-colorMod)+','+(253-colorMod)+')';
+                span.style.color = 'rgb('+(color[0]+colorMod)+','+(color[1]-colorMod)+','+(color[2]-colorMod)+')';
 
                 box.appendChild(span);
 
@@ -359,8 +360,8 @@ window.addEventListener('load', function () {
             'But something feels... Off...  Thankfully FRED has 2 MBAs',
             '(HBS, C/O \'91 & GSB, C/O \'89)',
         ],
-        null,
         0,
+        [0, 151, 251],
         0,
         'Randomize30.wav'
     );
@@ -423,7 +424,7 @@ window.addEventListener('load', function () {
                         'thANK you!... & take ThIS key. it\"S for slug\'s iglooo NeXT dooor ... :]'
                     ],
                     'Sally',
-                    0,
+                    [150, 111, 170],
                     0,
                     'Blip_Select55.wav'
                 );
@@ -440,7 +441,7 @@ window.addEventListener('load', function () {
                         ' YoUR a TRUE hero Mang !  an HonoRARY SLUG in my BOOk ;)',
                     ],
                     'Slug',
-                    0,
+                    [45, 188, 157],
                     0,
                     'Hit_Hurt45.wav'
                 );
