@@ -541,8 +541,8 @@ function preloadImages() {
 
         'world-map-haha.png',
         'house-1-map.png',
-        'igloo-map.png"',
-        'hut-map.png"',
+        'igloo-map.png',
+        'hut-map.png',
     ].forEach(function (url) {
         drawImage(url, 0, 0);
     });
