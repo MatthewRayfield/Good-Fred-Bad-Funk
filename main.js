@@ -341,7 +341,8 @@ function showBubble(text, callback) {
 }
 
 window.addEventListener('load', function () {
-    var canvas = document.getElementById('c');
+    var canvas = document.getElementById('c'),
+        image = new Image();
 
     if (navigator.userAgent.toLowerCase().indexOf('chrome') == -1) {
         alert('Hey! If you can, play this game in Google Chrome. Other browsers are currently not well supported... But you can try. Thanks : ]');
@@ -351,20 +352,24 @@ window.addEventListener('load', function () {
 
     preloadImages();
 
-    loop();
 
-    doText(
-        [
-            'August 12th, 2003',
-            'FRED, the world\'s most famous management consultant finds herself on a beach',
-            'But something feels... Off...  Thankfully FRED has 2 MBAs',
-            '(HBS, C/O \'91 & GSB, C/O \'89)',
-        ],
-        0,
-        [0, 151, 251],
-        0,
-        'Randomize30.wav'
-    );
+    image.addEventListener('load', function () {
+        loop();
+
+        doText(
+            [
+                'August 12th, 2003',
+                'FRED, the world\'s most famous management consultant finds herself on a beach',
+                'But something feels... Off...  Thankfully FRED has 2 MBAs',
+                '(HBS, C/O \'91 & GSB, C/O \'89)',
+            ],
+            0,
+            [0, 151, 251],
+            0,
+            'Randomize30.wav'
+        );
+    })
+    image.src = 'images/world-map-haha.png';
 
     // misc setup k
     e('minimize-button').addEventListener('click', function () {
@@ -545,5 +550,5 @@ function preloadImages() {
         'hut-map.png',
     ].forEach(function (url) {
         drawImage(url, 0, 0);
-    });
+    })
 }
