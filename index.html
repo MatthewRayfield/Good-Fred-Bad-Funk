@@ -128,7 +128,7 @@
                 z-index: 4;
                 width: 800px;
                 height: 600px;
-                background: #004f98;
+                background: url('images/haha.jpg') center no-repeat #004f98;
                 display: none;
 
                 -webkit-animation-duration: .2s;
@@ -143,6 +143,11 @@
                 height: 30px;
                 background: url('images/task-bar.png');
             }
+            @-webkit-keyframes minimize {
+                0% {top: 0;}
+                50% {top: 550px}
+                100% {top:0}
+            }
             #browser-window {
                 position: absolute;
                 top: 0px;
@@ -151,6 +156,9 @@
                 width: 800px;
                 height: 570px;
                 background: url('images/browser-window.png');
+
+                -webkit-animation-duration: 1s;
+                -webkit-animation-timing-function: ease-in-out;
             }
             @-webkit-keyframes funk-die {
                 0% {margin-top: 0}
@@ -386,6 +394,7 @@
                             <h3>Image Attributions</h3>
                             <p style="font:20px monospace">
                             All character graphics are original. Backgrounds were constructed from pieces of the images referenced below. Cat GIFs were borrowed from links below. I hope you don't mind.<br><br>
+                            </p>
                             <pre>
 http://www.jetoboj.cz/wp-content/detached-house.jpg
 http://upload.wikimedia.org/wikipedia/commons/c/cc/St_Fagans_Celtic_Village_the_main_hut.jpg
@@ -425,6 +434,8 @@ http://viralgifs.com/lulz-50-epic-cat-gifs/
 http://www.complex.com/style/2013/04/the-25-funniest-grumpy-cat-gifs/
 and maybe a few cat gifs from google images ... i searched "cat gifs"
                             </pre>
+                            <p style="font:20px monospace">
+                            Oh and most sounds were created with bfxr or other doodads. But the Windows sounds came from: http://grossgang.com/wav/windows%20sounds/windows%20xp%20media%20senter/
                             <br><br>
                             SEN. Kobe says : "hey kids! stay in school" ;]]
                             </p>

@@ -86,7 +86,9 @@ function doKeys() {
 function movePlayer() {
     var speed = 2.5,
         oldX = pX,
-        oldY = pY;
+        oldY = pY,
+        x,
+        y;
 
     if (pMoving) {
         if (pDirection == 0) pY -= speed;
@@ -95,10 +97,10 @@ function movePlayer() {
         if (pDirection == 3) pX -= speed;
     }
 
-    currentMap.walls.forEach(function (wall) {
-        var x = pX + 40,
-            y = pY + 100;
+    x = pX + 40;
+    y = pY + 100;
 
+    currentMap.walls.forEach(function (wall) {
         if (x >= wall.x && y >= wall.y && x <= wall.x + wall.width && y <= wall.y + wall.height) {
             pX = oldX;
             pY = oldY;
@@ -110,6 +112,12 @@ function movePlayer() {
             }
         }
     });
+
+    if (x < 0 || x > currentMap.width || y < 0 || y > 600) {
+        pX = oldX;
+        pY = oldY;
+        pMoving = false;
+    }
 
     if (pMoving) {
         lastAction = null;
@@ -192,9 +200,14 @@ function doText(texts, name, color, callback, sound) {
     inDialogue = true;
 
     box.style.display = 'block';
-    nameBox.style.display = 'block';
 
-    nameBox.innerHTML = name;
+    if (!name) {
+        nameBox.style.display = 'none';
+    }
+    else {
+        nameBox.style.display = 'block';
+        nameBox.innerHTML = name;
+    }
 
     function nextText() {
         var text = texts.shift(),
@@ -329,11 +342,41 @@ function showBubble(text, callback) {
 window.addEventListener('load', function () {
     var canvas = document.getElementById('c');
 
+    if (navigator.userAgent.toLowerCase().indexOf('chrome') == -1) {
+        alert('Hey! If you can, play this game in Google Chrome. Other browsers are currently not well supported... But you can try. Thanks : ]');
+    }
+
     context = canvas.getContext('2d');
+
+    preloadImages();
 
     loop();
 
+    doText(
+        [
+            'August 12th, 2003',
+            'FRED, the world\'s most famous management consultant finds herself on a beach',
+            'But something feels... Off...  Thankfully FRED has 2 MBAs',
+            '(HBS, C/O \'91 & GSB, C/O \'89)',
+        ],
+        null,
+        0,
+        0,
+        'Randomize30.wav'
+    );
+
     // misc setup k
+    e('minimize-button').addEventListener('click', function () {
+        if (exploding) {
+            return;
+        }
+
+        e('browser-window').style.webkitAnimationName = 'minimize';
+        playSound('haha.wav');
+        setTimeout(function () {
+            e('browser-window').style.webkitAnimationName = '';
+        }, 1000);
+    });
     e('close-button').addEventListener('click', function () {
         var pc = document.getElementById('pc');
 
@@ -465,3 +508,36 @@ window.addEventListener('keydown', function (event) {
 window.addEventListener('keyup', function () {
     keys[event.which] = false;
 });
+
+function preloadImages() {
+    [
+        'up-1.gif',
+        'up-2.gif',
+        'down-1.gif',
+        'down-2.gif',
+        'left-1.gif',
+        'left-2.gif',
+        'right-1.gif',
+        'right-2.gif',
+
+        'blue-guy-1.gif',
+        'blue-guy-2.gif',
+        'blue-guy-smile-1.gif',
+        'blue-guy-smile-2.gif',
+        'blue-guy-talk.gif',
+
+        'sally-1.gif',
+        'sally-2.gif',
+        'sally-smile-1.gif',
+        'sally-smile-2.gif',
+        'sally-talk.gif',
+
+        'slug-1.gif',
+        'slug-2.gif',
+        'slug-smile-1.gif',
+        'slug-smile-2.gif',
+        'slug-talk.gif',
+    ].forEach(function (url) {
+        drawImage(url, 0, 0);
+    });
+}
