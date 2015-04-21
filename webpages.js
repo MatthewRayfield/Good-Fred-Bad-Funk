@@ -31,6 +31,7 @@ var webpages = {
                             flags['steve-funk-destroyed'] = true;
                             house1Map.characterState = 'smile';
                             e('bad-funk-toolbar').style.marginTop = -300;
+                            e('bad-funk-toolbar').style.animationName = 'funk-die';
                             e('bad-funk-toolbar').style.webkitAnimationName = 'funk-die';
                         }
                     );
@@ -69,6 +70,7 @@ var webpages = {
                                         flags['sally-funk-destroyed'] = true;
                                         hutMap.characterState = 'smile';
                                         e('bad-funk-toolbar').style.marginTop = -300;
+                                        e('bad-funk-toolbar').style.animationName = 'funk-die';
                                         e('bad-funk-toolbar').style.webkitAnimationName = 'funk-die';
                                     }
                                 );
@@ -125,6 +127,7 @@ var webpages = {
                                         flags['slug-funk-destroyed'] = true;
                                         iglooMap.characterState = 'smile';
                                         e('bad-funk-toolbar').style.marginTop = -300;
+                                        e('bad-funk-toolbar').style.animationName = 'funk-die';
                                         e('bad-funk-toolbar').style.webkitAnimationName = 'funk-die';
                                     }
                                 );

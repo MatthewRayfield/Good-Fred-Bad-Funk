@@ -140,9 +140,11 @@ function drawWalls() {
 function fade(callback) {
     var fader = document.getElementById('fader');
 
+    fader.style.animationName = 'fade';
     fader.style.webkitAnimationName = 'fade';
 
     setTimeout(function () {
+        fader.style.animationName = '';
         fader.style.webkitAnimationName = '';
     }, 1000);
 
@@ -238,6 +240,10 @@ function doText(texts, name, color, callback, sound) {
                 }
 
                 setTimeout(function () {
+                    span.style.animationName = 'letter-wiggle';
+                    span.style.animationIterationCount = 'infinite';
+                    span.style.animationDirection = 'alternate';
+
                     span.style.webkitAnimationName = 'letter-wiggle';
                     span.style.webkitAnimationIterationCount = 'infinite';
                     span.style.webkitAnimationDirection = 'alternate';
@@ -303,6 +309,7 @@ function showPc(url) {
 
     inDialogue = true;
 
+    e('bad-funk-toolbar').style.animationName = '';
     e('bad-funk-toolbar').style.webkitAnimationName = '';
     e('bad-funk-toolbar').style.marginTop = 0;
 
@@ -311,10 +318,13 @@ function showPc(url) {
     urlHistory = [];
     loadWebpage(url);
     pc.style.display = 'block';
+    pc.style.animationDirection = 'normal';
     pc.style.webkitAnimationDirection = 'normal';
     pc.style.opacity = 1;
+    pc.style.animationName = 'zoom-fade';
     pc.style.webkitAnimationName = 'zoom-fade';
     setTimeout(function () {
+        pc.style.animationName = '';
         pc.style.webkitAnimationName = '';
     }, 500);
 }
@@ -343,10 +353,6 @@ function showBubble(text, callback) {
 window.addEventListener('load', function () {
     var canvas = document.getElementById('c'),
         image = new Image();
-
-    if (navigator.userAgent.toLowerCase().indexOf('chrome') == -1) {
-        alert('Hey! If you can, play this game in Google Chrome. Other browsers are currently not well supported... But you can try. Thanks : ]');
-    }
 
     context = canvas.getContext('2d');
 
@@ -377,9 +383,11 @@ window.addEventListener('load', function () {
             return;
         }
 
+        e('browser-window').style.animationName = 'minimize';
         e('browser-window').style.webkitAnimationName = 'minimize';
         playSound('haha.wav');
         setTimeout(function () {
+            e('browser-window').style.animationName = '';
             e('browser-window').style.webkitAnimationName = '';
         }, 1000);
     });
@@ -391,13 +399,16 @@ window.addEventListener('load', function () {
         }
 
         playSound('windows-hardware-remove.wav');
+        pc.style.animationDirection = 'reverse';
         pc.style.webkitAnimationDirection = 'reverse';
         pc.style.opacity = 0;
+        pc.style.animationName = 'zoom-fade';
         pc.style.webkitAnimationName = 'zoom-fade';
 
         setTimeout(function () {
             inDialogue = false;
             pc.style.display = 'none';
+            pc.style.animationName = '';
             pc.style.webkitAnimationName = '';
         }, 500);
 
@@ -511,7 +522,7 @@ window.addEventListener('keydown', function (event) {
     }
 });
 
-window.addEventListener('keyup', function () {
+window.addEventListener('keyup', function (event) {
     keys[event.which] = false;
 });
 
@@ -549,6 +560,6 @@ function preloadImages() {
         'igloo-map.png',
         'hut-map.png',
     ].forEach(function (url) {
-        drawImage(url, 0, 0);
+        drawImage(url, 800, 600);
     })
 }
