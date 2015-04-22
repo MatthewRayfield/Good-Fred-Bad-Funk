@@ -1,4 +1,15 @@
-image sources:
+# Good Fred Bad Funk
+
+a game by Matthew Rayfield
+
+play it here: [http://matthewrayfield.github.io/Good-Fred-Bad-Funk/](http://matthewrayfield.github.io/Good-Fred-Bad-Funk/)
+
+made in 48h for Ludum Dare 32
+
+therefore, code is funky as heck
+
+
+### image sources:
 - http://www.jetoboj.cz/wp-content/detached-house.jpg
 - http://upload.wikimedia.org/wikipedia/commons/c/cc/St_Fagans_Celtic_Village_the_main_hut.jpg
 - http://careyfuller.com/blog/wp-content/uploads/2011/03/rv-pics-0011.jpg
