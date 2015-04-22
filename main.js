@@ -193,12 +193,13 @@ function loop() {
     setTimeout(loop, 10);
 }
 
-function doText(texts, name, color, callback, sound) {
+function doText(texts, name, color, callback, sound, volume) {
     var box = document.getElementById('dialogue-box'),
         nameBox = document.getElementById('name-box');
 
     color = color || [83,131,253];
     sound = sound || 'Hit_Hurt38.wav';
+    volume = volume || .15;
 
     inDialogue = true;
 
@@ -236,7 +237,7 @@ function doText(texts, name, color, callback, sound) {
                 box.appendChild(span);
 
                 if ([' ', '.', '?', '!', ','].indexOf(letter) == -1) {
-                    playSound(sound, .5);
+                    playSound(sound, volume);
                 }
 
                 setTimeout(function () {
@@ -372,7 +373,7 @@ window.addEventListener('load', function () {
             0,
             [0, 151, 251],
             0,
-            'Randomize30.wav'
+            'Randomize30.wav', 1
         );
     })
     image.src = 'images/world-map-haha.png';
